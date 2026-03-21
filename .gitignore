@@ -1,9 +1,27 @@
+# Python
 __pycache__/
 *.pyc
+
+# models / weights
 *.pth
 *.pt
+checkpoints/
+
+# outputs
 output/
 outputs/
 logs/
+
+# datasets
 data/
-FIRSTDEMO/output/
+
+# VS Code
+.vscode/
+
+# conda / venv
+env/
+venv/
+.conda/
+
+# system
+.DS_Store
