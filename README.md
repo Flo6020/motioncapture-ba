@@ -1,6 +1,6 @@
 # motioncapture-ba
 
-Setup:
+# Setup:
 
 # WSL installieren (PowerShell als Admin)
 wsl --install
