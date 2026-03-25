@@ -28,5 +28,4 @@ cv2.imshow("test", img)
 
 # Parameter 0: unendlich lange waren
 cv2.waitKey(0)
-
 cv2.destroyAllWindows()

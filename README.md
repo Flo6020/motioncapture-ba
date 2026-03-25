@@ -48,3 +48,48 @@ g++ --version
 mim install "mmcv==2.1.0"   # dauert ca. 10–15 Minuten
 mim install "mmdet==3.2.0"
 mim install "mmpose>=1.1.0"
+
+
+# Zusätzliche Libraries installieren (Fix für OpenCV GUI / Qt xcb Fehler)
+
+# Problem:
+# Bei Nutzung von show=True kam es zu folgendem Fehler:
+# qt.qpa.plugin: Could not load the Qt platform plugin "xcb"
+#
+# Ursache:
+# OpenCV nutzt unter Linux ein Qt-basiertes GUI-Backend.
+# In WSL fehlen einige benötigte X11- und OpenGL-Runtimebibliotheken standardmäßig.  --> nachinstallieren
+sudo apt update
+
+sudo apt install -y \
+libgl1 \
+libglx-mesa0 \
+libxcb-xinerama0 \
+libxkbcommon-x11-0 \
+libxcb1 \
+libx11-xcb1 \
+libxcb-render0 \
+libxcb-shape0 \
+libxcb-xfixes0 \
+libxcb-randr0 \
+libxcb-shm0 \
+libxcb-icccm4 \
+libxcb-keysyms1 \
+libxcb-image0 \
+libxcb-util1 \
+libxcb-cursor0 \
+libxcb-xkb1 \
+libxcb-sync1 \
+libxrender1 \
+libfontconfig1 \
+libfreetype6 \
+libxext6 \
+libsm6 \
+libice6
+
+# Problem:
+# erzeugte MP4-Dateien konnten zunächst nicht abgespielt werden
+sudo apt install ffmpeg
+
+# Test der Video-Wiedergabe
+ffplay output/visualizations/<video>.mp4
