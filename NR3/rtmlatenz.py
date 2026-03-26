@@ -12,12 +12,10 @@ results = inferencer(
     out_dir='output'
 )
 
-
 latencies = []
 frame_count = 0
 
 print("Benchmark gestartet ...")
-
 
 while True:
 
@@ -35,9 +33,7 @@ while True:
 
     frame_count += 1
 
-
 print("Video fertig verarbeitet")
-
 
 avg_latency = statistics.mean(latencies)
 min_latency = min(latencies)
