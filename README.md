@@ -46,7 +46,7 @@ conda activate openmmlab
 
 # PyTorch mit GPU
 pip install torch==2.1.2 torchvision \
-  --index-url [download.pytorch.org](https://download.pytorch.org/whl/cu118)
+  --index-url https://download.pytorch.org/whl/cu118
 
 # PyTorch mit CPU
 conda install pytorch torchvision cpuonly -c pytorch
@@ -61,7 +61,7 @@ pip install mmengine
 
 # MMCV für GPU als vorkompiliertes CUDA-Wheel 
 pip install mmcv==2.1.0 \
-  -f [download.openmmlab.com](https://download.openmmlab.com/mmcv/dist/cu118/torch2.1.0/index.html)
+  -f https://download.openmmlab.com/mmcv/dist/cu118/torch2.1.0/index.html
 
 # MMCV für GPU
 mim install "mmcv==2.1.0"
