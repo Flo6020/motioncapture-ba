@@ -1,95 +1,75 @@
 # motioncapture-ba
 
-# Setup:
+Bachelorarbeit: Latenzoptimierte 2D-Pose-Schätzung auf Basis von MMPose  
+für den möglichen Einsatz in der Rehabilitationsunterstützung und im Reha-Sport.
 
-# WSL installieren (PowerShell als Admin)
-wsl --install
+Das System erkennt menschliche Körperposen in Echtzeit aus Kamera- oder
+Videoeingaben und visualisiert die detektierten Keypoints als Live-Overlay.
+Ziel ist eine möglichst geringe Ende-zu-Ende-Latenz, um unmittelbares
+Bewegungsfeedback zu ermöglichen.
 
-# Ubuntu starten und im Linux-Dateisystem arbeiten
-cd ~
-mkdir mmpose_project #neuer Ordner
-cd mmpose_project
+---
 
-# Miniconda in WSL installieren
-cd ~
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
+## Inhalt
 
-# Conda aktivieren
-source ~/.bashrc
+- [Zielsetzung](#zielsetzung)
+- [Installation](#installation)
 
-# falls conda nicht erkannt wird
-source ~/miniconda3/bin/activate
-conda init bash
-source ~/.bashrc
+---
 
-# Conda Terms akzeptieren (wichtig bei neuen Versionen)
-conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
-conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+## Zielsetzung
 
-# Environment erstellen
-conda create --name openmmlab python=3.8 -y
+Konventionelle Motion-Capture-Systeme sind präzise, aber teuer und an feste
+Infrastruktur gebunden. Dieses Projekt untersucht, ob eine markerlose,
+kamerabasierte 2D-Pose-Schätzung für Feedback-Anwendungen im Reha-Sport
+ausreichend geringe Latenzen erzielen kann.
+
+Das System basiert auf **MMPose** (OpenMMLab) und ist für zwei Szenarien
+ausgelegt:
+
+- **CPU-Betrieb** – Laptop ohne dedizierte GPU 
+- **GPU-Betrieb** – Arbeitsplatzrechner mit CUDA 
+
+---
+
+## Installation
+
+Als Ausgangspunkt dient die offizielle MMPose-Installationsanleitung:  
+[mmpose.readthedocs.io](https://mmpose.readthedocs.io/en/latest/installation.html)
+
+### Kurzinstallation 
+
+```bash
+# Conda-Umgebung erstellen
+conda create --name openmmlab python=3.10 -y
 conda activate openmmlab
 
-# PyTorch installieren (CPU)
+# PyTorch mit GPU
+pip install torch==2.1.2 torchvision \
+  --index-url [download.pytorch.org](https://download.pytorch.org/whl/cu118)
+
+# PyTorch mit CPU
 conda install pytorch torchvision cpuonly -c pytorch
 
-# wichtige zusätzliche Dependencies
+# Buildtools (einmalig in WSL)
+sudo apt install -y build-essential
+
+# Python-Abhängigkeiten
 pip install fsspec
 pip install -U openmim
 pip install mmengine
 
-# System-Compiler installieren (notwendig für mmcv)
-sudo apt update
-sudo apt install -y build-essential
-g++ --version
+# MMCV für GPU als vorkompiliertes CUDA-Wheel 
+pip install mmcv==2.1.0 \
+  -f [download.openmmlab.com](https://download.openmmlab.com/mmcv/dist/cu118/torch2.1.0/index.html)
 
-# OpenMMLab Pakete installieren
-mim install "mmcv==2.1.0"   # dauert ca. 10–15 Minuten
+# MMCV für GPU
+mim install "mmcv==2.1.0"
+
+# OpenMMLab-Pakete
 mim install "mmdet==3.2.0"
 mim install "mmpose>=1.1.0"
 
-
-# Zusätzliche Libraries installieren (Fix für OpenCV GUI / Qt xcb Fehler)
-
-# Problem:
-# Bei Nutzung von show=True kam es zu folgendem Fehler:
-# qt.qpa.plugin: Could not load the Qt platform plugin "xcb"
-#
-# Ursache:
-# OpenCV nutzt unter Linux ein Qt-basiertes GUI-Backend.
-# In WSL fehlen einige benötigte X11- und OpenGL-Runtimebibliotheken standardmäßig.  --> nachinstallieren
-sudo apt update
-
-sudo apt install -y \
-libgl1 \
-libglx-mesa0 \
-libxcb-xinerama0 \
-libxkbcommon-x11-0 \
-libxcb1 \
-libx11-xcb1 \
-libxcb-render0 \
-libxcb-shape0 \
-libxcb-xfixes0 \
-libxcb-randr0 \
-libxcb-shm0 \
-libxcb-icccm4 \
-libxcb-keysyms1 \
-libxcb-image0 \
-libxcb-util1 \
-libxcb-cursor0 \
-libxcb-xkb1 \
-libxcb-sync1 \
-libxrender1 \
-libfontconfig1 \
-libfreetype6 \
-libxext6 \
-libsm6 \
-libice6
-
-# Problem:
-# erzeugte MP4-Dateien konnten zunächst nicht abgespielt werden
-sudo apt install ffmpeg
-
-# Test der Video-Wiedergabe
-ffplay output/visualizations/<video>.mp4
+# Versionsanpassungen (Kompatibilität)
+pip install "numpy<2"
+pip install "opencv-python<4.13"
