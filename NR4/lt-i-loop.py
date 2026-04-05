@@ -5,9 +5,9 @@ import csv
 import os
 
 RUNS = 30
-CURRENT_INPUT = 'input/Video1.mp4'  
+CURRENT_INPUT = 'input/Bild3.jpg'  
 CODE_NAME     = 'pc-i' #oder lt-i             
-CSV_PATH      = '/mnt/c/Users/floyu/mmpose_project/NR4/output/ergebnisse.csv'
+CSV_PATH      = '/home/mci/projects/motioncapture-ba/NR4/output/ergebnisse.csv'
 
 # Inferencer einmal laden, außerhalb der Schleife
 inferencer = MMPoseInferencer(

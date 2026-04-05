@@ -24,10 +24,13 @@ POSE_WEIGHTS = '/home/mci/projects/motioncapture-ba/NR4/weights/rtmpose_tiny.pth
 DET_CONFIG   = '/home/mci/projects/motioncapture-ba/NR4/mmpose/demo/mmdetection_cfg/rtmdet_nano_320-8xb32_coco-person.py'
 DET_WEIGHTS  = '/home/mci/projects/motioncapture-ba/NR4/weights/rtmdet_nano.pth'
 
-VIDEO_PATH   = '/home/mci/projects/motioncapture-ba/NR4/input/Video1.mp4.mp4'
+VIDEO_PATH   = '/home/mci/projects/motioncapture-ba/NR4/input/Bild3.jpg'
+OUTPUT_DIR   = '/home/mci/projects/motioncapture-ba/NR4/output'
+CSV_PATH     = '/home/mci/projects/motioncapture-ba/NR4/output/ergebnisse.csv'
+
 DEVICE = 'cuda:0' #if torch.cuda.is_available() else 'cpu'
 RUNS = 30
-CURRENT_INPUT = 'Video1'
+CURRENT_INPUT = 'Bild3'
 CODE_NAME     = 'lt-l'
 # ────────────────────────────────────────────────────────────────
 
