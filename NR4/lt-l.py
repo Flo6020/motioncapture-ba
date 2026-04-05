@@ -8,22 +8,20 @@ import cv2
 import time
 import statistics
 import numpy as np
-import os
-import torch
 
 # Module registrieren – mmdet zuerst, mmpose ohne Scope-Override (Werkzeugkasten)
 register_det_modules()
 register_pose_modules(init_default_scope=False)
 
 # ── Konfiguration ────────────────────────────────────────────────
-POSE_CONFIG  = '/home/mci/projects/motioncapture-ba/NR4/mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-t_8xb256-420e_coco-256x192.py'
-POSE_WEIGHTS = '/home/mci/projects/motioncapture-ba/NR4/weights/rtmpose_tiny.pth'
+POSE_CONFIG  = '/mnt/c/Users/floyu/mmpose_project/NR4/mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-t_8xb256-420e_coco-256x192.py'
+POSE_WEIGHTS = '/mnt/c/Users/floyu/mmpose_project/NR4/weights/rtmpose_tiny.pth'
 
-DET_CONFIG   = '/home/mci/projects/motioncapture-ba/NR4/mmpose/demo/mmdetection_cfg/rtmdet_nano_320-8xb32_coco-person.py'
-DET_WEIGHTS  = '/home/mci/projects/motioncapture-ba/NR4/weights/rtmdet_nano.pth'
+DET_CONFIG   = '/mnt/c/Users/floyu/mmpose_project/NR4/mmpose/demo/mmdetection_cfg/rtmdet_nano_320-8xb32_coco-person.py'
+DET_WEIGHTS  = '/mnt/c/Users/floyu/mmpose_project/NR4/weights/rtmdet_nano.pth'
 
-VIDEO_PATH   = '/home/mci/projects/motioncapture-ba/NR4/FloGolf.mp4'
-DEVICE = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+VIDEO_PATH   = '/mnt/c/Users/floyu/mmpose_project/NR4/input/Video2.mp4'
+DEVICE       = 'cpu'
 # ────────────────────────────────────────────────────────────────
 
 # Modelle laden
@@ -43,7 +41,7 @@ fps_video = cap.get(cv2.CAP_PROP_FPS)
 w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 writer = cv2.VideoWriter(
-    '/home/mci/projects/motioncapture-ba/NR4/output/result.mp4',
+    '/mnt/c/Users/floyu/mmpose_project/NR4/output/result.mp4',
     cv2.VideoWriter_fourcc(*'mp4v'),
     fps_video, (w, h)
 )
@@ -164,3 +162,4 @@ print(f"Detection Latenz:         {avg_det:.4f} Sekunden")
 print(f"Pose Latenz:              {avg_pose:.4f} Sekunden")
 print(f"Visualisierung:           {avg_vis:.4f} Sekunden")
 print("=======================================\n")
+
