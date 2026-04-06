@@ -14,13 +14,13 @@ register_det_modules()
 register_pose_modules(init_default_scope=False)
 
 # ── Konfiguration ────────────────────────────────────────────────
-POSE_CONFIG  = '/mnt/c/Users/floyu/mmpose_project/NR4/mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-t_8xb256-420e_coco-256x192.py'
-POSE_WEIGHTS = '/mnt/c/Users/floyu/mmpose_project/NR4/weights/rtmpose_tiny.pth'
+POSE_CONFIG  = '/home/floyu/mmpose_project/NR4/mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-t_8xb256-420e_coco-256x192.py'
+POSE_WEIGHTS = '/home/floyu/mmpose_project/NR4/weights/rtmpose_tiny.pth'
 
-DET_CONFIG   = '/mnt/c/Users/floyu/mmpose_project/NR4/mmpose/demo/mmdetection_cfg/rtmdet_nano_320-8xb32_coco-person.py'
-DET_WEIGHTS  = '/mnt/c/Users/floyu/mmpose_project/NR4/weights/rtmdet_nano.pth'
+DET_CONFIG   = '/home/floyu/mmpose_project/NR4/mmpose/demo/mmdetection_cfg/rtmdet_nano_320-8xb32_coco-person.py'
+DET_WEIGHTS  = '/home/floyu/mmpose_project/NR4/weights/rtmdet_nano.pth'
 
-VIDEO_PATH   = '/mnt/c/Users/floyu/mmpose_project/NR4/input/Video2.mp4'
+VIDEO_PATH   = '/home/floyu/mmpose_project/NR4/input/Video2.mp4'
 DEVICE       = 'cpu'
 # ────────────────────────────────────────────────────────────────
 
