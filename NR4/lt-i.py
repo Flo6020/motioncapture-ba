@@ -10,7 +10,7 @@ inferencer = MMPoseInferencer(
 )
 
 results = inferencer(
-    'input/Bild1.jpg',
+    'input/Bild3.jpg',
     show=False,
     out_dir='output'
 )

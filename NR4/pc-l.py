@@ -90,6 +90,19 @@ while True:
     pose_end = time.perf_counter()
     pose_latency = pose_end - pose_start
 
+
+    # für Vergleich Scores
+    output_data = []
+    for res in pose_results:
+        output_data.append({
+            'bbox': np.array(res.pred_instances.bboxes).tolist(),
+            'keypoints': np.array(res.pred_instances.keypoints).tolist(),
+            'keypoint_scores': np.array(res.pred_instances.keypoint_scores).tolist()
+        })
+
+    with open('output/predictions.json', 'w') as f:
+        json.dump(output_data, f, indent=2)
+
     # ── Visualisierung ───────────────────────────────────────────
     vis_frame = frame.copy()
     vis_latency = 0

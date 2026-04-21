@@ -8,6 +8,7 @@ import cv2
 import time
 import statistics
 import numpy as np
+import json
 
 # Module registrieren – mmdet zuerst, mmpose ohne Scope-Override (Werkzeugkasten)
 register_det_modules()
@@ -20,7 +21,7 @@ POSE_WEIGHTS = '/home/floyu/mmpose_project/NR4/weights/rtmpose_tiny.pth'
 DET_CONFIG   = '/home/floyu/mmpose_project/NR4/mmpose/demo/mmdetection_cfg/rtmdet_nano_320-8xb32_coco-person.py'
 DET_WEIGHTS  = '/home/floyu/mmpose_project/NR4/weights/rtmdet_nano.pth'
 
-VIDEO_PATH   = '/home/floyu/mmpose_project/NR4/input/Video2.mp4'
+VIDEO_PATH   = '/home/floyu/mmpose_project/NR4/input/Bild3.jpg'
 DEVICE       = 'cpu'
 # ────────────────────────────────────────────────────────────────
 
@@ -87,6 +88,19 @@ while True:
 
     pose_end = time.perf_counter()
     pose_latency = pose_end - pose_start
+
+
+    # für Vergleich Scores
+    output_data = []
+    for res in pose_results:
+        output_data.append({
+            'bbox': np.array(res.pred_instances.bboxes).tolist(),
+            'keypoints': np.array(res.pred_instances.keypoints).tolist(),
+            'keypoint_scores': np.array(res.pred_instances.keypoint_scores).tolist()
+        })
+
+    with open('output/predictions.json', 'w') as f:
+        json.dump(output_data, f, indent=2)
 
     # ── Visualisierung ───────────────────────────────────────────
     vis_frame = frame.copy()

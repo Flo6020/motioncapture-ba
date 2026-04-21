@@ -67,7 +67,7 @@ while True:
 
     person_bboxes = bboxes[(labels == 0) & (scores > 0.3)]
 
-    # 2) Pose-Schätzung – Scope explizit auf mmpose setzen
+    # 2) Pose-Schätzung – Scope auf mmpose setzen
     with DefaultScope.overwrite_default_scope('mmpose'):
         if len(person_bboxes) > 0:
             pose_results = inference_topdown(pose_model, frame, person_bboxes)
