@@ -10,6 +10,7 @@ import statistics
 import numpy as np
 import os
 import torch
+import json
 
 # Module registrieren – mmdet zuerst, mmpose ohne Scope-Override (Werkzeugkasten)
 register_det_modules()
@@ -22,7 +23,7 @@ POSE_WEIGHTS = '/home/mci/projects/motioncapture-ba/NR4/weights/rtmpose_tiny.pth
 DET_CONFIG   = '/home/mci/projects/motioncapture-ba/NR4/mmpose/demo/mmdetection_cfg/rtmdet_nano_320-8xb32_coco-person.py'
 DET_WEIGHTS  = '/home/mci/projects/motioncapture-ba/NR4/weights/rtmdet_nano.pth'
 
-VIDEO_PATH   = '/home/mci/projects/motioncapture-ba/NR4/input/Video1.mp4.mp4'
+VIDEO_PATH   = '/home/mci/projects/motioncapture-ba/NR4/input/Bild3.jpg'
 DEVICE = 'cuda:0' #if torch.cuda.is_available() else 'cpu'
 # ────────────────────────────────────────────────────────────────
 
