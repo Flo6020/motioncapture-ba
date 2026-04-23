@@ -49,6 +49,7 @@ d = {
         load('predictions/pr-pc-l-bild2.json'),
         load('predictions/pr-pc-l-bild3.json'),
     ],
+    ''
 }
 
 # Farben & Marker

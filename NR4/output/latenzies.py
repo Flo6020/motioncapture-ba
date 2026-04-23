@@ -74,7 +74,7 @@ plt.bar(tabelle_mean["aufbau"], tabelle_mean["avg_latency"])
 plt.xlabel("Aufbau")
 plt.ylabel("Mittlere avg_latency [ms]")
 plt.tight_layout()
-plt.savefig("diagramm_avg_latency.pdf", dpi=300)
+plt.savefig("diagramm_avg_latency.png", dpi=300)
 plt.show()
 
 # Diagramm 2: Vergleich von avg_det, avg_pose, avg_vis
@@ -87,7 +87,7 @@ plt.xlabel("Aufbau")
 plt.ylabel("Zeit [ms]")
 plt.xticks(rotation=0)
 plt.tight_layout()
-plt.savefig("diagramm_teil_latenzen.pdf", dpi=300)
+plt.savefig("diagramm_teil_latenzen.png", dpi=300)
 plt.show()
 
 
