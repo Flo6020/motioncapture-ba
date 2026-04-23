@@ -21,8 +21,8 @@ register_pose_modules(init_default_scope=False)
 POSE_CONFIG  = '/home/mci/projects/motioncapture-ba/NR4/mmpose/configs/body_2d_keypoint/rtmpose/coco/rtmpose-t_8xb256-420e_coco-256x192.py'
 POSE_WEIGHTS = '/home/mci/projects/motioncapture-ba/NR4/weights/rtmpose_tiny.pth'
 
-DET_CONFIG   = '/home/floyu/mmpose_project/NR4/mmpose/demo/mmdetection_cfg/rtmdet_m_640-8xb32_coco-person.py'
-DET_WEIGHTS  = '/home/floyu/mmpose_project/NR4/weights/rtmdet_m.pth'
+DET_CONFIG  = '/home/mci/projects/motioncapture-ba/NR4/mmpose/demo/mmdetection_cfg/rtmdet_m_640-8xb32_coco-person.py'
+DET_WEIGHTS  = '/home/mci/projects/motioncapture-ba/NR4/weights/rtmdet_m.pth'
 
 VIDEO_PATH   = '/home/mci/projects/motioncapture-ba/NR4/input/Bild3.jpg'
 OUTPUT_DIR   = '/home/mci/projects/motioncapture-ba/NR4/output'
