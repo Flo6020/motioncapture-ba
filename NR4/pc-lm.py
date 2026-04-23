@@ -23,7 +23,7 @@ POSE_WEIGHTS = '/home/mci/projects/motioncapture-ba/NR4/weights/rtmpose_tiny.pth
 DET_CONFIG  = '/home/mci/projects/motioncapture-ba/NR4/mmpose/demo/mmdetection_cfg/rtmdet_m_640-8xb32_coco-person.py'
 DET_WEIGHTS  = '/home/mci/projects/motioncapture-ba/NR4/weights/rtmdet_m.pth'
 
-VIDEO_PATH   = '/home/mci/projects/motioncapture-ba/NR4/input/Bild3.jpg'
+VIDEO_PATH   = '/home/mci/projects/motioncapture-ba/NR4/input/Bild1.jpg'
 DEVICE = 'cuda:0' #if torch.cuda.is_available() else 'cpu'
 # ────────────────────────────────────────────────────────────────
 
