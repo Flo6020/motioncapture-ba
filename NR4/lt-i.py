@@ -4,7 +4,6 @@ import statistics
 import csv
 import os
 
-
 inferencer = MMPoseInferencer(
     pose2d='rtmpose-t_8xb256-420e_coco-256x192'
 )

@@ -31,7 +31,7 @@ CSV_PATH     = '/home/mci/projects/motioncapture-ba/NR4/output/ergebnisse.csv'
 DEVICE = 'cuda:0' #if torch.cuda.is_available() else 'cpu'
 RUNS = 30
 CURRENT_INPUT = 'Bild3'
-CODE_NAME     = 'pc-l'
+CODE_NAME     = 'pc-lm'
 # ────────────────────────────────────────────────────────────────
 
 # Dateien/Pfade prüfen
