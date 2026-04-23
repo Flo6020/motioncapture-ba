@@ -5,8 +5,10 @@ import matplotlib.pyplot as plt
 dateien = {
     "pc-i": "latenz-pc-i.csv",
     "pc-l": "latenz-pc-l.csv",
+    "pc-lm": "latenz-pc-lm.csv",
     "lt-i": "latenz-lt-i.csv",
-    "lt-l": "latenz-lt-l.csv"
+    "lt-l": "latenz-lt-l.csv",
+    "lt-lm": "latenz-lt-lm.csv",
 }
 
 # CSV-Dateien einlesen
@@ -87,6 +89,7 @@ plt.xticks(rotation=0)
 plt.tight_layout()
 plt.savefig("diagramm_teil_latenzen.pdf", dpi=300)
 plt.show()
+
 
 # Diagramm 3: Boxplot der avg_latency für alle 4 Aufbauten in einem Diagramm
 
