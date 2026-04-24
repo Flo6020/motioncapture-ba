@@ -18,16 +18,7 @@ SKELETON = [
     (11,13),(13,15),(12,14),(14,16),
 ]
 
-# Daten laden 
-def load(path):
-    with open(path) as f:
-        p = json.load(f)[0]
-    kpts = p['keypoints']
-    if isinstance(kpts[0][0], list):  # lt-l/pc-l haben [[...]]
-        kpts = kpts[0]
-    return kpts
-
-# Alle 12 Dateien laden
+# Alle Dateien laden
 d = {
     'lt-i': [
         load('predictions/pr-lt-i-bild1.json'),
@@ -39,6 +30,11 @@ d = {
         load('predictions/pr-lt-l-bild2.json'),
         load('predictions/pr-lt-l-bild3.json'),
     ],
+    'lt-lm': [
+        load('predictions/pr-lt-lm-bild1.json'),
+        load('predictions/pr-lt-lm-bild2.json'),
+        load('predictions/pr-lt-lm-bild3.json'),
+    ],
     'pc-i': [
         load('predictions/pr-pc-i-bild1.json'),
         load('predictions/pr-pc-i-bild2.json'),
@@ -49,15 +45,30 @@ d = {
         load('predictions/pr-pc-l-bild2.json'),
         load('predictions/pr-pc-l-bild3.json'),
     ],
-    ''
+    'pc-lm': [
+        load('predictions/pr-pc-lm-bild1.json'),
+        load('predictions/pr-pc-lm-bild2.json'),
+        load('predictions/pr-pc-lm-bild3.json'),
+    ],
 }
+
+# Daten laden 
+def load(path):
+    with open(path) as f:
+        p = json.load(f)[0]
+    kpts = p['keypoints']
+    if isinstance(kpts[0][0], list):  # lt-l/pc-l haben [[...]]
+        kpts = kpts[0]
+    return kpts
 
 # Farben & Marker
 styles = {
     'lt-i': ('#E91E63', 'o', 'lt-i'),
     'lt-l': ('#2196F3', 's', 'lt-l'),
+    'lt-lm': ('#9C27B0', 'P', 'lt-lm'),
     'pc-i': ('#4CAF50', '^', 'pc-i'),
     'pc-l': ('#FF9800', 'D', 'pc-l'),
+    'pc-lm': ('#009688', 'X', 'pc-lm'),
 }
 
 # 3 Plots erstellen
@@ -65,7 +76,7 @@ for bild in range(3):
     fig, ax = plt.subplots(figsize=(8, 12))
     #ax.set_title(f'Keypoint-Overlay — Bild {bild+1}', fontsize=14, fontweight='bold')
 
-    for setup in ['lt-i', 'lt-l', 'pc-i', 'pc-l']:
+    for setup in ['lt-i', 'lt-l', 'lt-lm', 'pc-i', 'pc-l', 'pc-lm']:
         color, marker, label = styles[setup]
         kpts = d[setup][bild]
         xs = [k[0] for k in kpts]

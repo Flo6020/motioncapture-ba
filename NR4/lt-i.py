@@ -9,9 +9,11 @@ inferencer = MMPoseInferencer(
 )
 
 results = inferencer(
-    'input/Bild1.jpg',
+    'input/Bild3.jpg',
     show=False,
-    out_dir='output'
+    out_dir='output',
+    #radius=8,
+    #thickness=5 diese 2 extraparameter für Berichtbilder
 )
 
 latencies = []
